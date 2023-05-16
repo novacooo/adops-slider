@@ -47,16 +47,3 @@ body {
   background-size: cover;
   border-radius: 24px;
 }
-
-/* Slider */
-
-.slider-container {
-  width: 100%;
-  background-color: #e5e5e5;
-}
-
-.slide-wrapper {
-  aspect-ratio: 36 / 10;
-  background-size: cover;
-  background-position: center;
-}

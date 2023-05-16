@@ -5,78 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adops Slider</title>
-    <link rel="stylesheet" href="./splide.min.css" />
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./splide.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+      // LINKI DO ZDJĘĆ
+      const images = [
+        'https://images.pexels.com/photos/3167310/pexels-photo-3167310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        'https://images.pexels.com/photos/319798/pexels-photo-319798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        'https://images.pexels.com/photos/46174/strawberries-berries-fruit-freshness-46174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      ];
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const sliderEl = document.querySelector('#slider');
+        const listEl = sliderEl.querySelector('.splide__track > .splide__list');
+        images.forEach((image) => {
+          const itemEl = document.createElement('li');
+          itemEl.classList.add('splide__slide');
+          const wrapperEl = document.createElement('div');
+          wrapperEl.classList.add('slide-wrapper');
+          wrapperEl.style.backgroundImage = `url('${image}')`;
+          itemEl.appendChild(wrapperEl);
+          listEl.appendChild(itemEl);
+        });
+        new Splide(sliderEl).mount();
+      });
+    </script>
+    <style>
+      .slider-container {
+        width: 100%;
+        background-color: #e5e5e5;
+      }
+      .slide-wrapper {
+        aspect-ratio: 36 / 10;
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
   </head>
   <body>
     <div class="phone-frame">
       <div id="light-screen" class="screen">
         <section
-          id="image-carousel-light"
+          id="slider"
           class="slider-container splide"
           aria-label="Beautiful Images"
         >
           <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <div
-                  class="slide-wrapper"
-                  style="background-image: url('./groceries.png')"
-                />
-              </li>
-              <li class="splide__slide">
-                <div
-                  class="slide-wrapper"
-                  style="background-image: url('./groceries.png')"
-                />
-              </li>
-              <li class="splide__slide">
-                <div
-                  class="slide-wrapper"
-                  style="background-image: url('./groceries.png')"
-                />
-              </li>
-            </ul>
-          </div>
-        </section>
-      </div>
-    </div>
-    <div class="phone-frame">
-      <div id="dark-screen" class="screen">
-        <section
-          id="image-carousel-dark"
-          class="slider-container splide"
-          aria-label="Beautiful Images"
-        >
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <div
-                  class="slide-wrapper"
-                  style="background-image: url('./groceries.png')"
-                />
-              </li>
-              <li class="splide__slide">
-                <div
-                  class="slide-wrapper"
-                  style="background-image: url('./groceries.png')"
-                />
-              </li>
-              <li class="splide__slide">
-                <div
-                  class="slide-wrapper"
-                  style="background-image: url('./groceries.png')"
-                />
-              </li>
-            </ul>
+            <ul class="splide__list"></ul>
           </div>
         </section>
       </div>
     </div>
     <script>
-      new Splide('#image-carousel-light').mount();
-      new Splide('#image-carousel-dark').mount();
+      new Splide('#image-carousel').mount();
     </script>
   </body>
 </html>
