@@ -29,7 +29,7 @@ body {
 .phone-frame {
   box-sizing: content-box;
   padding: 10px;
-  height: 780px;
+  max-height: 780px;
   width: 360px;
   background-color: rgb(26, 26, 26);
   border-radius: 32px;

@@ -12,32 +12,38 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
-      // LINKI DO ZDJĘĆ
       const images = [
-        'https://images.pexels.com/photos/3167310/pexels-photo-3167310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        'https://images.pexels.com/photos/319798/pexels-photo-319798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        'https://images.pexels.com/photos/46174/strawberries-berries-fruit-freshness-46174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        'https://placehold.co/360x100',
+        'https://placehold.co/360x100',
+        'https://placehold.co/360x100',
+        'https://placehold.co/360x100',
       ];
+      const sliderBg = '#fff';
 
       document.addEventListener('DOMContentLoaded', () => {
         const sliderEl = document.querySelector('#slider');
+        sliderEl.style.backgroundColor = sliderBg;
         const listEl = sliderEl.querySelector('.splide__track > .splide__list');
+
         images.forEach((image) => {
           const itemEl = document.createElement('li');
           itemEl.classList.add('splide__slide');
+
           const wrapperEl = document.createElement('div');
           wrapperEl.classList.add('slide-wrapper');
           wrapperEl.style.backgroundImage = `url('${image}')`;
+
           itemEl.appendChild(wrapperEl);
+
           listEl.appendChild(itemEl);
         });
+
         new Splide(sliderEl).mount();
       });
     </script>
     <style>
       .slider-container {
         width: 100%;
-        background-color: #e5e5e5;
       }
       .slide-wrapper {
         aspect-ratio: 36 / 10;
