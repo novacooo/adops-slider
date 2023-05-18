@@ -19,6 +19,7 @@
         'https://placehold.co/360x100',
       ];
       const sliderBg = '#fff';
+      const intervalInSeconds = 3;
 
       document.addEventListener('DOMContentLoaded', () => {
         const sliderEl = document.querySelector('#slider');
@@ -38,7 +39,16 @@
           listEl.appendChild(itemEl);
         });
 
-        new Splide(sliderEl).mount();
+        const options = {
+          type: 'fade',
+          rewind: true,
+          autoplay: true,
+          interval: intervalInSeconds * 1000,
+          resetProgress: true,
+          pagination: false,
+        };
+
+        new Splide(sliderEl, options).mount();
       });
     </script>
     <style>
