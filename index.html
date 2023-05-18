@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adops Slider</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link
+    <link rel="stylesheet" href="./mockup.css" />
+    <link rel="stylesheet" href="./slider.min.css" />
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css"
       rel="stylesheet"
-    />
+    /> -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
       const images = [
@@ -19,7 +20,7 @@
         'https://picsum.photos/720/200?random=4',
       ];
       const sliderBg = '#fff';
-      const intervalInSeconds = 3;
+      const intervalInSeconds = 1;
 
       document.addEventListener('DOMContentLoaded', () => {
         const sliderEl = document.querySelector('#slider');
@@ -60,6 +61,13 @@
         background-size: cover;
         background-position: center;
       }
+      .slide-wrapper button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 16px;
+      }
     </style>
   </head>
   <body>
@@ -71,7 +79,18 @@
           aria-label="Beautiful Images"
         >
           <div class="splide__track">
-            <ul class="splide__list"></ul>
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <div
+                  class="slide-wrapper"
+                  style="
+                    background-image: url('https://picsum.photos/720/200?random=5');
+                  "
+                >
+                  <button>Click me</button>
+                </div>
+              </li>
+            </ul>
           </div>
         </section>
       </div>
