@@ -77,65 +77,42 @@
     cursor: pointer;
   }
 
-  &:focus-visible {
-    outline: 3px solid #0bf;
-    outline-offset: 3px;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    border-radius: 999px;
+  &.is-active {
     background-color: rgb(49, 131, 255);
-    z-index: 19;
-    top: 0;
-    left: 0;
-    bottom: 0;
-  }
-
-  &.is-active::before {
-    animation: progress 3s linear;
-  }
-}
-
-.splide.is-focus-in .splide__pagination__page:focus {
-  outline: 3px solid #0bf;
-  outline-offset: 3px;
-}
-
-.splide__pagination--ttb {
-  bottom: 0;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  left: auto;
-  padding: 1em 0;
-  right: 0.5em;
-  top: 0;
-}
-
-@keyframes progress {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
   }
 }
 
 .carousel-progress {
-  background: #ccc;
+  position: relative;
+  background: #ffffff;
 }
 
 .carousel-progress-bar {
-  background: greenyellow;
+  background: rgb(47, 85, 255);
   height: 14px;
   transition: width 400ms ease;
   width: 0;
 }
 
 .splide__progress__bar {
-  height: 3px;
+  height: 5px;
   background: #ff1a1a;
+}
+
+.progress-bars {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 5px;
+}
+
+.bar-wrapper {
+  flex-grow: 1;
+}
+
+.grower {
+  flex-grow: 1;
+  background-color: yellow;
 }
