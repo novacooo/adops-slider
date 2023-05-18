@@ -70,6 +70,7 @@
 }
 
 .splide__pagination__page {
+  position: relative;
   background: #ffffff;
   border: 0;
   border-radius: 9999px;
@@ -90,8 +91,19 @@
   outline: 3px solid #0bf;
   outline-offset: 3px;
 }
-.splide__pagination__page.is-active {
-  background-color: rgb(41, 119, 255);
+.splide__pagination__page::before {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background-color: rgb(49, 131, 255);
+  z-index: 19;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.splide__pagination__page.is-active::before {
+  -webkit-animation: progress 3s linear;
+          animation: progress 3s linear;
 }
 
 .splide.is-focus-in .splide__pagination__page:focus {
@@ -112,4 +124,22 @@
   padding: 1em 0;
   right: 0.5em;
   top: 0;
+}
+
+@-webkit-keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }

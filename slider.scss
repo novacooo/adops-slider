@@ -62,6 +62,7 @@
   display: none;
 }
 .splide__pagination__page {
+  position: relative;
   background: #ffffff;
   border: 0;
   border-radius: 9999px;
@@ -81,8 +82,19 @@
     outline-offset: 3px;
   }
 
-  &.is-active {
-    background-color: rgb(41, 119, 255);
+  &::before {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    background-color: rgb(49, 131, 255);
+    z-index: 19;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  &.is-active::before {
+    animation: progress 3s linear;
   }
 }
 
@@ -101,4 +113,13 @@
   padding: 1em 0;
   right: 0.5em;
   top: 0;
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
