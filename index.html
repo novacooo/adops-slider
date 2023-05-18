@@ -49,7 +49,16 @@
           // pagination: false,
         };
 
-        new Splide(sliderEl, options).mount();
+        const splide = new Splide(sliderEl, options);
+        const progressBar = splide.root.querySelector('.carousel-progress-bar');
+
+        splide.on('mounted move', function () {
+          const end = splide.Components.Controller.getEnd() + 1;
+          const rate = Math.min((splide.index + 1) / end, 1);
+          progressBar.style.width = String(100 * rate) + '%';
+        });
+
+        splide.mount();
       });
     </script>
     <style>
@@ -92,6 +101,12 @@
                 </div>
               </li>
             </ul>
+          </div>
+          <div class="splide__progress">
+            <div class="splide__progress__bar"></div>
+          </div>
+          <div class="carousel-progress">
+            <div class="carousel-progress-bar"></div>
           </div>
         </section>
       </div>

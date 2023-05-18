@@ -143,3 +143,19 @@
     width: 100%;
   }
 }
+.carousel-progress {
+  background: #ccc;
+}
+
+.carousel-progress-bar {
+  background: greenyellow;
+  height: 14px;
+  -webkit-transition: width 400ms ease;
+  transition: width 400ms ease;
+  width: 0;
+}
+
+.splide__progress__bar {
+  height: 3px;
+  background: #ff1a1a;
+}
