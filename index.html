@@ -25,12 +25,12 @@
       document.addEventListener('DOMContentLoaded', () => {
         const sliderEl = document.querySelector('#slider');
         const listEl = sliderEl.querySelector('.splide__track > .splide__list');
-        const progressBarsEl = document.querySelector('.progress-bars');
-        const growerEls = document.querySelectorAll('.grower');
+        const leftGrowerEl = document.querySelectorAll('.grower')[0];
+        const rightGrowerEl = document.querySelectorAll('.grower')[1];
+        const barsWrapperEl = document.querySelector('.bars-wrapper');
+        const progressEl = document.querySelector('.carousel-progress');
 
         sliderEl.style.backgroundColor = sliderBg;
-        growerEls[0].style.flexGrow = 0;
-        growerEls[1].style.flexGrow = images.length - 1;
 
         images.forEach((image, index) => {
           const itemEl = document.createElement('li');
@@ -40,13 +40,13 @@
           wrapperEl.classList.add('slide-wrapper');
           wrapperEl.style.backgroundImage = `url('${image}')`;
 
-          // const barWrapperEl = document.createElement('div');
-          // barWrapperEl.classList.add('bar-wrapper');
-          // barWrapperEl.classList.add(`bar-wrapper-${index}`);
+          const barEl = document.createElement('div');
+          barEl.classList.add('bar');
+          barEl.classList.add(`bar-${index}`);
 
           itemEl.appendChild(wrapperEl);
           listEl.appendChild(itemEl);
-          // progressBarsEl.appendChild(barWrapperEl);
+          barsWrapperEl.appendChild(barEl);
         });
 
         const options = {
@@ -59,27 +59,21 @@
         };
 
         const splide = new Splide(sliderEl, options);
-        const progressBar = splide.root.querySelector('.carousel-progress-bar');
 
         splide.on('mounted move', function () {
-          const end = splide.Components.Controller.getEnd() + 1;
-          const rate = Math.min((splide.index + 1) / end, 1);
-          progressBar.style.width = String(100 * rate) + '%';
+          const index = splide.index;
+          const length = images.length;
 
-          // const barWrapper = progressBarsEl.querySelector(
-          //   `.bar-wrapper-${splide.index}`
-          // );
-          // const bar = document.querySelector('.splide__progress__bar');
+          progressEl.style.paddingLeft = `${index * 8}px`;
+          progressEl.style.paddingRight = `${(length - index - 1) * 8}px`;
 
-          // bar?.remove();
+          leftGrowerEl.style.flexGrow = index;
+          rightGrowerEl.style.flexGrow = length - index - 1;
 
-          // const newBar = document.createElement('div');
-          // newBar.classList.add('splide__progress__bar');
-
-          // barWrapper.appendChild(newBar);
-
-          growerEls[0].style.flexGrow = splide.index;
-          growerEls[1].style.flexGrow = images.length - splide.index - 1;
+          for (let i = 0; i < length; i++) {
+            const barEl = splide.root.querySelector(`.bar-${i}`);
+            barEl.style.backgroundColor = i >= index ? '#fff' : '#4287f5';
+          }
         });
 
         splide.mount();
@@ -111,15 +105,13 @@
           class="slider-container splide"
           aria-label="Beautiful Images"
         >
-          <div id="progress-container" class="carousel-progress">
-            <div class="progress-bars">
-              <div class="grower"></div>
-              <div class="bar-wrapper">
-                <div class="splide__progress__bar"></div>
-              </div>
-              <div class="grower"></div>
+          <div class="carousel-progress">
+            <div class="grower"></div>
+            <div class="bar-wrapper">
+              <div class="splide__progress__bar"></div>
             </div>
-            <div class="carousel-progress-bar"></div>
+            <div class="grower"></div>
+            <div class="bars-wrapper"></div>
           </div>
           <div class="splide__track">
             <ul class="splide__list"></ul>
@@ -127,8 +119,5 @@
         </section>
       </div>
     </div>
-    <script>
-      new Splide('#image-carousel').mount();
-    </script>
   </body>
 </html>

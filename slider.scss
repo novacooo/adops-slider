@@ -78,41 +78,46 @@
   }
 
   &.is-active {
-    background-color: rgb(49, 131, 255);
+    background-color: #4287f5;
   }
 }
 
 .carousel-progress {
   position: relative;
-  background: #ffffff;
-}
-
-.carousel-progress-bar {
-  background: rgb(47, 85, 255);
-  height: 14px;
-  transition: width 400ms ease;
-  width: 0;
+  display: flex;
+  gap: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: #e5e5e5;
 }
 
 .splide__progress__bar {
-  height: 5px;
-  background: #ff1a1a;
-}
-
-.progress-bars {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  gap: 5px;
+  position: relative;
+  z-index: 1;
+  height: 6px;
+  background: #4287f5;
+  border-radius: 999px;
 }
 
 .bar-wrapper {
   flex-grow: 1;
 }
 
-.grower {
+.bars-wrapper {
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.bar {
   flex-grow: 1;
-  background-color: yellow;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 999px;
 }
