@@ -1,0 +1,55 @@
+body {
+  background-color: #30403f;
+}
+
+#banner-container > .expanding-expanded {
+  display: none;
+}
+
+#atl-container {
+  background-color: #353535;
+  opacity: 1;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  overflow: hidden;
+  width: 20%;
+  height: 100%;
+  display: none;
+  -ms-transform: translate(0, 0%) translate(0%, 0%) rotate(0deg);
+  -webkit-transform: translate(0, 0%) translate(0%, 0%) rotate(0deg);
+  -moz-transform: translate(0, 0%) translate(0%, 0%) rotate(0deg);
+  transform: translate(0, 0%) translate(0%, 0%) rotate(0deg);
+}
+
+#atl-img {
+  width: 100%;
+}
+
+#collapsed-image {
+  position: absolute;
+  opacity: 1;
+  top: 0%;
+  left: 0%;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  -ms-transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+  -webkit-transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+  -moz-transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+  transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+}
+
+#expanded-image {
+  position: absolute;
+  opacity: 1;
+  top: 0%;
+  left: 0%;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  -ms-transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+  -webkit-transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+  -moz-transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+  transform: translate(0, 0) translate(0%, 0%) rotate(0deg);
+}

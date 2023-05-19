@@ -1,0 +1,42 @@
+<head>
+  <script src="mraid.js"></script>
+</head>
+<body>
+  <div id="banner-container">
+    <div id="collapsed-container" class="expanding-collapsed">
+      <img id="collapsed-image" src="#" />
+    </div>
+    <div id="expanded-container" class="expanding-expanded">
+      <img id="expanded-image" src="#" />
+    </div>
+    <div id="atl-container">
+      <img id="atl-img" src="#" />
+    </div>
+  </div>
+  <script>
+    const Settings = {
+      IsExpand: true,
+      HasButton: true,
+      OnlyATL: false,
+      Button: 'listonic_plus_both',
+      Collapsed: '',
+
+      Expanded: '',
+
+      Width: 1080,
+      CollapsedHeight: 300,
+      ExpandedHeight: 900,
+
+      ATL: '',
+
+      ClickTag: '',
+
+      CollapsePixels: '',
+
+      ExpandPixels: ['', ''],
+
+      TrackingPixels: '',
+    };
+  </script>
+  <script type="module" src="./banner_logic.js"></script>
+</body>
