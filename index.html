@@ -19,8 +19,15 @@
         'https://picsum.photos/720/200?random=3',
         'https://picsum.photos/720/200?random=4',
       ];
-      const sliderBg = '#fff';
       const intervalInSeconds = 3;
+      const options = {
+        type: 'fade',
+        rewind: true,
+        autoplay: true,
+        interval: intervalInSeconds * 1000,
+        resetProgress: false,
+        pagination: false,
+      };
 
       document.addEventListener('DOMContentLoaded', () => {
         const sliderEl = document.querySelector('#slider');
@@ -29,8 +36,6 @@
         const rightGrowerEl = document.querySelectorAll('.grower')[1];
         const barsWrapperEl = document.querySelector('.bars-wrapper');
         const progressEl = document.querySelector('.carousel-progress');
-
-        sliderEl.style.backgroundColor = sliderBg;
 
         images.forEach((image, index) => {
           const itemEl = document.createElement('li');
@@ -48,15 +53,6 @@
           listEl.appendChild(itemEl);
           barsWrapperEl.appendChild(barEl);
         });
-
-        const options = {
-          type: 'fade',
-          rewind: true,
-          autoplay: true,
-          interval: intervalInSeconds * 1000,
-          resetProgress: false,
-          pagination: false,
-        };
 
         const splide = new Splide(sliderEl, options);
 
@@ -79,23 +75,6 @@
         splide.mount();
       });
     </script>
-    <style>
-      .slider-container {
-        width: 100%;
-      }
-      .slide-wrapper {
-        aspect-ratio: 36 / 10;
-        background-size: cover;
-        background-position: center;
-      }
-      .slide-wrapper button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 16px;
-      }
-    </style>
   </head>
   <body>
     <div class="phone-frame">

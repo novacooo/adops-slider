@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+#slider {
+  background-color: #fff;
+}
+
 .splide__arrow {
   position: absolute;
   top: 50%;
@@ -75,4 +79,14 @@
   height: 6px;
   background-color: #fff;
   border-radius: 999px;
+}
+
+.slider-container {
+  width: 100%;
+}
+
+.slide-wrapper {
+  aspect-ratio: 36/10;
+  background-size: cover;
+  background-position: center;
 }
