@@ -3,6 +3,7 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 #slider {
@@ -89,4 +90,59 @@
   aspect-ratio: 36/10;
   background-size: cover;
   background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 10%;
+}
+
+.button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+}
+.button-wrapper button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(118, 221, 62);
+  border: 0;
+  border-radius: 999px;
+  -webkit-box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
+}
+.button-wrapper button:hover {
+  cursor: pointer;
+  background-color: rgb(79, 181, 24);
+}
+.button-wrapper button svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+}
+.button-wrapper span {
+  color: #ffffff;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05em;
 }
