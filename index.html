@@ -16,7 +16,7 @@
     <script>
       const settings = {
         // Czas wyświetlania jednego slide'u w sekundach
-        interval: 2,
+        interval: 3,
 
         // Kolor akcentu (kolor paska)
         accent: '#4287f5',
@@ -26,34 +26,39 @@
         heightRatio: 0.2778,
 
         // Opis wszystkich możliwych opcji w pojedynczym slajdzie:
-        // image - link do zdjęcia/banneru (jedyny wymagany parametr)
+        // image - link do banneru (jedyny wymagany parametr)
         // atl - url przycisku (jeżeli jest podany to przycisk się wyświetli)
+        // clickTag - link po kliknięciu w banner (jeśli nie jest podany to banner nie będzie klikalny)
+        // onlyAtl - jeśli włączone to po kliknięciu w banner również zostanie użyty link z ATL [false/true]
         // buttonText - tekst pod przyciskiem (domyślnie "DODAJ")
         // buttonPosition - pozycja przycisku ['flex-start' lub 'center' lub 'flex-end'] (domyślnie 'left')
         slides: [
           {
             image: 'https://picsum.photos/720/200?random=1',
-            atl: 'link',
+            atl: 'https://...',
           },
           {
             image: 'https://picsum.photos/720/200?random=2',
           },
           {
             image: 'https://picsum.photos/720/200?random=3',
-            atl: 'link',
+            atl: 'https://...',
             buttonPosition: 'flex-end',
           },
           {
             image: 'https://picsum.photos/720/200?random=4',
-            atl: 'link',
+            atl: 'https://...',
             buttonText: 'Przykładowy tekst',
             buttonPosition: 'center',
           },
           {
             image: 'https://picsum.photos/720/200?random=5',
+            clickTag: 'https://...',
           },
           {
             image: 'https://picsum.photos/720/200?random=6',
+            atl: 'https://...',
+            onlyAtl: true,
           },
         ],
       };
