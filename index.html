@@ -11,10 +11,17 @@
     />
     <link rel="stylesheet" href="./mockup.css" />
     <link rel="stylesheet" href="./slider.min.css" />
+    <script src="mraid.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
       const settings = {
+        // Czas wyświetlania jednego slide'u w sekundach
         interval: 10,
+
+        // Opis wszystkich możliwych opcji w pojedynczym slajdzie:
+        // image - link do zdjęcia/banneru (jedyny wymagany parametr)
+        // atl - url przycisku (jeżeli jest podany to przycisk się wyświetli)
+        // buttonText - tekst pod przyciskiem (gdy nie jest podany to domyślnie jest "DODAJ")
         slides: [
           {
             image: 'https://picsum.photos/720/200?random=1',
@@ -38,11 +45,7 @@
   <body>
     <div class="phone-frame">
       <div id="light-screen" class="screen">
-        <section
-          id="slider"
-          class="slider-container splide"
-          aria-label="Beautiful Images"
-        >
+        <section id="slider" class="slider-container splide">
           <div class="carousel-progress">
             <div class="grower"></div>
             <div class="bar-wrapper">

@@ -124,7 +124,7 @@
           align-items: center;
   width: 40px;
   height: 40px;
-  background-color: rgb(118, 221, 62);
+  background-color: #34b524;
   border: 0;
   border-radius: 999px;
   -webkit-box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
@@ -132,7 +132,7 @@
 }
 .button-wrapper button:hover {
   cursor: pointer;
-  background-color: rgb(79, 181, 24);
+  background-color: #3bd627;
 }
 .button-wrapper button svg {
   width: 28px;
@@ -140,9 +140,10 @@
   fill: #fff;
 }
 .button-wrapper span {
-  color: #ffffff;
+  color: #fff;
   font-size: 12px;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.05em;
+  text-shadow: 0 2px 8px #000;
 }

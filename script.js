@@ -7,6 +7,8 @@ const options = {
   interval: interval * 1000,
   resetProgress: false,
   pagination: false,
+  pauseOnHover: false,
+  pauseOnFocus: false,
 };
 
 document.addEventListener('DOMContentLoaded', () => {
