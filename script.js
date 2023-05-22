@@ -1,4 +1,4 @@
-const { slides, interval, accent } = settings;
+const { slides, interval, accent, heightRatio } = settings;
 
 const accentColor = accent ?? '#4287f5';
 
@@ -11,6 +11,7 @@ const options = {
   pagination: false,
   pauseOnHover: false,
   pauseOnFocus: false,
+  heightRatio,
 };
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -87,8 +87,9 @@
 }
 
 .slide-wrapper {
-  aspect-ratio: 36/10;
+  height: 100%;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   display: -webkit-box;
   display: -ms-flexbox;
