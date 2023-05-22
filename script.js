@@ -1,4 +1,4 @@
-const { slides, interval, accent, heightRatio } = settings;
+const { slides, interval, accent, heightRatio, trackingPixels } = settings;
 
 const accentColor = accent ?? '#4287f5';
 
@@ -24,6 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressBarEl = document.querySelector('.splide__progress__bar');
 
   progressBarEl.style.backgroundColor = accentColor;
+
+  trackingPixels.forEach((pixel) => {
+    const frame = document.createElement('iframe');
+    frame.src = pixel;
+    frame.width = '1';
+    frame.height = '1';
+    frame.style.display = 'none';
+    document.body.appendChild(frame);
+  });
 
   slides.forEach(
     ({ image, atl, buttonText, buttonPosition, clickTag, onlyAtl }, index) => {
@@ -61,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (clickTag || onlyAtl) {
         const bannerLink = onlyAtl && !!atl ? atl : clickTag;
+
+        wrapperEl.style.cursor = 'pointer';
 
         wrapperEl.addEventListener('click', () => {
           window.open(bannerLink, 'blank');
