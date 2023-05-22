@@ -16,12 +16,16 @@
     <script>
       const settings = {
         // Czas wyświetlania jednego slide'u w sekundach
-        interval: 10,
+        interval: 2,
+
+        // Kolor akcentu (kolor paska)
+        accent: '#4287f5',
 
         // Opis wszystkich możliwych opcji w pojedynczym slajdzie:
         // image - link do zdjęcia/banneru (jedyny wymagany parametr)
         // atl - url przycisku (jeżeli jest podany to przycisk się wyświetli)
-        // buttonText - tekst pod przyciskiem (gdy nie jest podany to domyślnie jest "DODAJ")
+        // buttonText - tekst pod przyciskiem (domyślnie "DODAJ")
+        // buttonPosition - pozycja przycisku ['flex-start' lub 'center' lub 'flex-end'] (domyślnie 'left')
         slides: [
           {
             image: 'https://picsum.photos/720/200?random=1',
@@ -33,9 +37,19 @@
           {
             image: 'https://picsum.photos/720/200?random=3',
             atl: 'link',
+            buttonPosition: 'flex-end',
           },
           {
             image: 'https://picsum.photos/720/200?random=4',
+            atl: 'link',
+            buttonText: 'Przykładowy tekst',
+            buttonPosition: 'center',
+          },
+          {
+            image: 'https://picsum.photos/720/200?random=5',
+          },
+          {
+            image: 'https://picsum.photos/720/200?random=6',
           },
         ],
       };

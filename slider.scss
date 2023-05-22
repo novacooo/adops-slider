@@ -1,3 +1,10 @@
+$bg: #e5e5e5;
+$accent: #4287f5;
+$shadow: rgba(0, 0, 0, 0.5);
+$green: #34b524;
+$green-hover: #3bd627;
+$white: #fff;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +13,7 @@
 }
 
 #slider {
-  background-color: #e5e5e5;
+  background-color: $bg;
 }
 
 .splide__arrow {
@@ -40,14 +47,14 @@
   gap: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background: #e5e5e5;
+  background: $bg;
 }
 
 .splide__progress__bar {
   position: relative;
   z-index: 1;
   height: 6px;
-  background: #4287f5;
+  background-color: $accent;
   border-radius: 999px;
 }
 
@@ -70,7 +77,7 @@
 .bar {
   flex-grow: 1;
   height: 6px;
-  background-color: #fff;
+  background-color: $white;
   border-radius: 999px;
 }
 
@@ -84,6 +91,7 @@
   background-position: center;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding: 0 10%;
 }
 
@@ -99,29 +107,29 @@
     align-items: center;
     width: 40px;
     height: 40px;
-    background-color: #34b524;
+    background-color: $green;
     border: 0;
     border-radius: 999px;
-    box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 16px -4px $shadow;
 
     &:hover {
       cursor: pointer;
-      background-color: #3bd627;
+      background-color: $green-hover;
     }
 
     svg {
       width: 28px;
       height: 28px;
-      fill: #fff;
+      fill: $white;
     }
   }
 
   span {
-    color: #fff;
+    color: $white;
     font-size: 12px;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.05em;
-    text-shadow: 0 2px 8px #000;
+    text-shadow: 0 2px 8px $shadow;
   }
 }

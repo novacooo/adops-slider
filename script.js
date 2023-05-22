@@ -1,4 +1,6 @@
-const { slides, interval } = settings;
+const { slides, interval, accent } = settings;
+
+const accentColor = accent ?? '#4287f5';
 
 const options = {
   type: 'fade',
@@ -18,14 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const rightGrowerEl = document.querySelectorAll('.grower')[1];
   const barsWrapperEl = document.querySelector('.bars-wrapper');
   const progressEl = document.querySelector('.carousel-progress');
+  const progressBarEl = document.querySelector('.splide__progress__bar');
 
-  slides.forEach(({ image, atl, buttonText }, index) => {
+  progressBarEl.style.backgroundColor = accentColor;
+
+  slides.forEach(({ image, atl, buttonText, buttonPosition }, index) => {
     const itemEl = document.createElement('li');
     itemEl.classList.add('splide__slide');
 
+    const wrapperJustifyContent = buttonPosition ?? 'flex-start';
     const wrapperEl = document.createElement('div');
     wrapperEl.classList.add('slide-wrapper');
     wrapperEl.style.backgroundImage = `url('${image}')`;
+    wrapperEl.style.justifyContent = wrapperJustifyContent;
 
     const barEl = document.createElement('div');
     barEl.classList.add('bar');
@@ -65,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (let i = 0; i < length; i++) {
       const barEl = splide.root.querySelector(`.bar-${i}`);
-      barEl.style.backgroundColor = i >= index ? '#fff' : '#4287f5';
+      barEl.style.backgroundColor = i >= index ? '#fff' : accentColor;
     }
   });
 
