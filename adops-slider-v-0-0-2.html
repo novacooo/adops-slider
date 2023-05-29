@@ -8,6 +8,10 @@
       href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/gh/novacooo/adops-slider@main/slider.min.css"
+      rel="stylesheet"
+    />
     <script src="mraid.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
@@ -22,6 +26,12 @@
         // wielkości 360x100px to ten wskaźnik wynosi 0.2778 (100/360=0.2778).
         heightRatio: 0.2778,
 
+        // Czy z boku mają być ukryte przyciski do przewijania slajdów [false/true]
+        hiddenArrows: false,
+
+        // Kolor napisu pod przyciskiem
+        buttonTextColor: '#878787',
+
         // Lista pikseli śledzących ruch na reklamie
         trackingPixels: ['https://...', 'https://...'],
 
@@ -31,7 +41,6 @@
         // clickTag - link po kliknięciu w banner (jeśli nie jest podany to banner nie będzie klikalny)
         // onlyAtl - jeśli włączone to po kliknięciu w banner również zostanie użyty link z ATL [false/true]
         // buttonText - tekst pod przyciskiem (domyślnie "DODAJ")
-        // buttonPosition - pozycja przycisku ['flex-start'/'center'/'flex-end'] (domyślnie 'flex-start')
         slides: [
           {
             image: 'https://picsum.photos/720/200?random=1',
@@ -43,13 +52,11 @@
           {
             image: 'https://picsum.photos/720/200?random=3',
             atl: 'https://...',
-            buttonPosition: 'flex-end',
           },
           {
             image: 'https://picsum.photos/720/200?random=4',
             atl: 'https://...',
             buttonText: 'Przykładowy tekst',
-            buttonPosition: 'center',
           },
           {
             image: 'https://picsum.photos/720/200?random=5',
@@ -63,273 +70,7 @@
         ],
       };
     </script>
-    <script>
-      const { slides, interval, accent, heightRatio, trackingPixels } =
-        settings;
-
-      const accentColor = accent ?? '#4287f5';
-
-      const options = {
-        type: 'fade',
-        rewind: true,
-        autoplay: true,
-        interval: interval * 1000,
-        resetProgress: false,
-        pagination: false,
-        pauseOnHover: false,
-        pauseOnFocus: false,
-        heightRatio,
-      };
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const sliderEl = document.querySelector('#slider');
-        const listEl = sliderEl.querySelector('.splide__track > .splide__list');
-        const leftGrowerEl = document.querySelectorAll('.grower')[0];
-        const rightGrowerEl = document.querySelectorAll('.grower')[1];
-        const barsWrapperEl = document.querySelector('.bars-wrapper');
-        const progressEl = document.querySelector('.carousel-progress');
-        const progressBarEl = document.querySelector('.splide__progress__bar');
-
-        progressBarEl.style.backgroundColor = accentColor;
-
-        trackingPixels.forEach((pixel) => {
-          const frame = document.createElement('iframe');
-          frame.src = pixel;
-          frame.width = '1';
-          frame.height = '1';
-          frame.style.display = 'none';
-          document.body.appendChild(frame);
-        });
-
-        slides.forEach(
-          (
-            { image, atl, buttonText, buttonPosition, clickTag, onlyAtl },
-            index
-          ) => {
-            const itemEl = document.createElement('li');
-            itemEl.classList.add('splide__slide');
-
-            const wrapperJustifyContent = buttonPosition ?? 'flex-start';
-            const wrapperEl = document.createElement('div');
-            wrapperEl.classList.add('slide-wrapper');
-            wrapperEl.style.backgroundImage = `url('${image}')`;
-            wrapperEl.style.justifyContent = wrapperJustifyContent;
-
-            const barEl = document.createElement('div');
-            barEl.classList.add('bar');
-            barEl.classList.add(`bar-${index}`);
-
-            if (typeof atl !== 'undefined') {
-              const buttonWrapper = document.createElement('div');
-              const button = document.createElement('button');
-              const text = document.createElement('span');
-
-              buttonWrapper.classList.add('button-wrapper');
-              button.innerHTML =
-                '<svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 96 960 960" width="40"><path d="M479.883 866.74q-18.55 0-31.253-12.787-12.703-12.786-12.703-31.286V620.073H233.333q-18.5 0-31.286-12.82-12.787-12.82-12.787-31.37t12.787-31.253q12.786-12.703 31.286-12.703h202.594V329.333q0-18.5 12.82-31.286 12.82-12.787 31.37-12.787t31.253 12.787q12.703 12.786 12.703 31.286v202.594h202.594q18.5 0 31.286 12.82 12.787 12.82 12.787 31.37t-12.787 31.253q-12.786 12.703-31.286 12.703H524.073v202.594q0 18.5-12.82 31.286-12.82 12.787-31.37 12.787Z"/></svg>';
-              text.textContent = buttonText ?? 'Dodaj';
-
-              button.addEventListener('click', () => {
-                window.open(atl, 'blank');
-              });
-
-              buttonWrapper.appendChild(button);
-              buttonWrapper.appendChild(text);
-              wrapperEl.appendChild(buttonWrapper);
-            }
-
-            if (clickTag || onlyAtl) {
-              const bannerLink = onlyAtl && !!atl ? atl : clickTag;
-
-              wrapperEl.style.cursor = 'pointer';
-
-              wrapperEl.addEventListener('click', () => {
-                window.open(bannerLink, 'blank');
-              });
-            }
-
-            itemEl.appendChild(wrapperEl);
-            listEl.appendChild(itemEl);
-            barsWrapperEl.appendChild(barEl);
-          }
-        );
-
-        const splide = new Splide(sliderEl, options);
-
-        splide.on('mounted move', function () {
-          const index = splide.index;
-          const length = slides.length;
-
-          progressEl.style.paddingLeft = `${index * 8}px`;
-          progressEl.style.paddingRight = `${(length - index - 1) * 8}px`;
-
-          leftGrowerEl.style.flexGrow = index;
-          rightGrowerEl.style.flexGrow = length - index - 1;
-
-          for (let i = 0; i < length; i++) {
-            const barEl = splide.root.querySelector(`.bar-${i}`);
-            barEl.style.backgroundColor = i >= index ? '#fff' : accentColor;
-          }
-        });
-
-        splide.mount();
-      });
-    </script>
-    <style>
-      * {
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-      }
-
-      #slider {
-        background-color: #e5e5e5;
-      }
-
-      .splide__arrow {
-        position: absolute;
-        top: 50%;
-        cursor: pointer;
-        height: 100%;
-        background: transparent;
-        border: 0;
-        padding: 0;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        width: 10%;
-        z-index: 1;
-      }
-      .splide__arrow svg {
-        opacity: 0;
-      }
-      .splide__arrow--prev {
-        left: 0;
-      }
-      .splide__arrow--next {
-        right: 0;
-      }
-
-      .carousel-progress {
-        position: relative;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        gap: 8px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        background: #e5e5e5;
-      }
-
-      .splide__progress__bar {
-        position: relative;
-        z-index: 1;
-        height: 6px;
-        background-color: #4287f5;
-        border-radius: 999px;
-      }
-
-      .bar-wrapper {
-        -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-      }
-
-      .bars-wrapper {
-        z-index: 0;
-        position: absolute;
-        left: 0;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        gap: 8px;
-        padding: 0 8px;
-        width: 100%;
-      }
-
-      .bar {
-        -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-        height: 6px;
-        background-color: #fff;
-        border-radius: 999px;
-      }
-
-      .slider-container {
-        width: 100%;
-      }
-
-      .slide-wrapper {
-        height: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-        padding: 0 10%;
-      }
-
-      .button-wrapper {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        gap: 4px;
-      }
-      .button-wrapper button {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        background-color: #34b524;
-        border: 0;
-        border-radius: 999px;
-        -webkit-box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
-        box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
-      }
-      .button-wrapper button:hover {
-        cursor: pointer;
-        background-color: #3bd627;
-      }
-      .button-wrapper button svg {
-        width: 28px;
-        height: 28px;
-        fill: #fff;
-      }
-      .button-wrapper span {
-        color: #fff;
-        font-size: 12px;
-        text-transform: uppercase;
-        font-weight: bold;
-        letter-spacing: 0.05em;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      }
-    </style>
+    <script src="https://cdn.jsdelivr.net/gh/novacooo/adops-slider@main/script.js"></script>
   </head>
   <body>
     <section id="slider" class="slider-container splide">
