@@ -94,15 +94,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
 
 .button-wrapper {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,7 +112,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 4px;
+  padding: 0 12px;
+  background-color: rgb(186, 186, 186);
+  color: #fff;
 }
 .button-wrapper button {
   display: -webkit-box;
@@ -130,8 +135,6 @@
   background-color: #34b524;
   border: 0;
   border-radius: 999px;
-  -webkit-box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.5);
 }
 .button-wrapper button:hover {
   cursor: pointer;
@@ -143,10 +146,8 @@
   fill: #fff;
 }
 .button-wrapper span {
-  color: #fff;
   font-size: 12px;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.05em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
