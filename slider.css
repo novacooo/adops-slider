@@ -117,7 +117,7 @@
           justify-content: center;
   gap: 4px;
   padding: 0 12px;
-  background-color: rgb(186, 186, 186);
+  background-color: #bebebe;
   color: #fff;
 }
 .button-wrapper button {

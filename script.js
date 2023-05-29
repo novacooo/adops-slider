@@ -110,4 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   splide.mount();
+
+  mraid.addEventListener('changeATLBackgroundColor', (hex) => {
+    if (typeof hex === 'undefined') return;
+
+    const buttonWrappers = document.querySelectorAll('.button-wrapper');
+
+    buttonWrappers.forEach((buttonWrapper) => {
+      buttonWrapper.style.backgroundColor = hex;
+    });
+  });
 });
