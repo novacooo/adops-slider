@@ -1,4 +1,5 @@
-const { slides, interval, accent, heightRatio, trackingPixels } = settings;
+const { slides, interval, accent, heightRatio, trackingPixels, hiddenArrows } =
+  settings;
 
 const accentColor = accent ?? '#4287f5';
 
@@ -11,6 +12,7 @@ const options = {
   pagination: false,
   pauseOnHover: false,
   pauseOnFocus: false,
+  arrows: hiddenArrows,
   heightRatio,
 };
 
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       wrapperEl.classList.add('slide-wrapper');
       wrapperEl.style.backgroundImage = `url('${image}')`;
       wrapperEl.style.justifyContent = wrapperJustifyContent;
+      wrapperEl.style.padding = hiddenArrows ? '0 10%' : '0';
 
       const barEl = document.createElement('div');
       barEl.classList.add('bar');
